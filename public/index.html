@@ -15,8 +15,91 @@
 
     <span id="result"></span>
 
+    <input id="myBtn" type="button" onclick="myFun()" value="click me"/>
+
+    <img id="myImg" src="https://placecage.lucidinternets.com/gif/284/196" alt="Nick Cage" onload="loaded()"> 
+
+    <nav>
+      <div class="nav-wrapper teal" style="padding-left: 10px;">
+         <a href="#!" class="brand-logo">Ajax Demo</a>
+      </div>
+  </nav>
+  <main class="row" style="padding: 40px">
+       <table>
+         <thead>
+              <tr>
+                 <th>#</th>
+                 <th>name</th>
+                 <th>Type</th>
+                 <th>website</th>
+              </tr>
+              </thead>
+                <tbody id="result">
+                                              
+                </tbody>
+         </table>
+   </main>
+
     <script>
 
+      let myImg = document.querySelector('#myImg');
+
+      myImg.addEventListener('load', loaded)
+
+      function loaded(){
+        console.log('Image Loaded');
+      }
+
+        function myFun(){
+          alert("hello");  
+        }
+
+        function myFun2(){
+          console.log("myFun2 called");
+        }
+
+      //receives the event parameter from addEventListener high order function
+        function logEventType(event){
+          console.log(event.type);
+        }
+
+        let myBtn = document.querySelector("#myBtn");
+
+        //attach myFun2 in addition to myFun to the click event of myBtn
+        myBtn.addEventListener("click", myFun2);
+
+        //There are other events such as mouseover and mouseout
+        
+        //Any callback passed to addeventListener receives an event object
+        myBtn.addEventListener("mouseover", logEventType);//logs 'mouseover'
+        myBtn.addEventListener("mouseout", logEventType);// logs 'mouseout'
+      //these events will fire when the mouse pointer hovers/passes over the button
+    </script>
+
+    <script>
+
+      const result = document.querySelector("#result");
+      result.innerHTML = '<h1> A SPAN </h1>'
+      result.style.color = 'blue';
+      console.log(result);  //returns the entire element and whats in it
+
+      function alertFun(){
+    alert("Hello !");
+   }
+
+      function confirmFun(){
+        let didConfirm = confirm("Are you sure about that?");
+        if(didConfirm){
+          alert("You confirmed :)");
+        }else{
+          alert("You did not confirm :(");
+        }
+      }
+
+      function promptFun(){
+        let val = prompt("What is your name?");
+        alert(`You've entered: ${val}`);
+      }
 
     </script>
     <script src="script.js"></script>
